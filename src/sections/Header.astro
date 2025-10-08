@@ -1,14 +1,4 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Header Quiz Master</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
       .nav-link-hover {
         background: linear-gradient(135deg, #ff8a00 0%, #e52e71 100%);
@@ -20,9 +10,7 @@
         -webkit-text-fill-color: transparent;
       }
     </style>
-  </head>
-  <body>
-    <header class="relative z-10 py-5 px-4 md:px-8">
+    <header class="relative z-10 py-5 px-4 md:px-8 animate-fade-in-down">
       <div class="flex items-center justify-between max-w-7xl mx-auto">
         <!-- Logo (izquierda) -->
         <div
@@ -87,33 +75,33 @@
         </button>
 
         <!-- Navegación (centro en desktop) -->
-        <nav class="hidden md:block absolute left-1/2 -translate-x-1/2">
-          <ul class="flex gap-2">
+        <nav class="hidden md:block absolute left-1/2 -translate-x-1/2 text-wrap">
+          <ul class="flex gap-2 whitespace-nowrap">
             <li>
               <a
-                href="#"
-                class="block px-6 py-2.5 text-gray-600 font-medium rounded-full transition-all duration-300 hover:text-[#ff8a00] hover:nav-link-hover hover:-translate-y-0.5 hover:shadow-lg"
+                href="/"
+                class="block px-4 py-2.5 text-gray-600 font-medium rounded-full transition-all duration-300 hover:text-[#ff8a00] hover:nav-link-hover hover:-translate-y-0.5 hover:shadow-lg"
                 >Inicio</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="block px-6 py-2.5 text-gray-600 font-medium rounded-full transition-all duration-300 hover:text-[#e52e71] hover:nav-link-hover hover:-translate-y-0.5 hover:shadow-lg"
+                class="block px-4 py-2.5 text-gray-600 font-medium rounded-full transition-all duration-300 hover:text-[#e52e71] hover:nav-link-hover hover:-translate-y-0.5 hover:shadow-lg"
                 >Categorías</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="block px-6 py-2.5 text-gray-600 font-medium rounded-full transition-all duration-300 hover:text-[#ff8a00] hover:nav-link-hover hover:-translate-y-0.5 hover:shadow-lg"
+                class="block px-4 py-2.5 text-gray-600 font-medium rounded-full transition-all duration-300 hover:text-[#ff8a00] hover:nav-link-hover hover:-translate-y-0.5 hover:shadow-lg"
                 >Crear Quiz</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="block px-6 py-2.5 text-gray-600 font-medium rounded-full transition-all duration-300 hover:text-[#e52e71] hover:nav-link-hover hover:-translate-y-0.5 hover:shadow-lg"
+                class="block px-4 py-2.5 text-gray-600 font-medium rounded-full transition-all duration-300 hover:text-[#e52e71] hover:nav-link-hover hover:-translate-y-0.5 hover:shadow-lg"
                 >LeaderBoard</a
               >
             </li>
@@ -173,23 +161,9 @@
       </div>
     </header>
 
-    <!-- Contenido -->
-    <div class="relative z-10 py-32 px-4 text-center animate-fade-in-up">
-      <h1
-        class="text-2xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-10"
-      >
-        Desafía tu Mente con <br />
-        <span class="gradient-text">Quiz Master</span>
-      </h1>
-      <p
-        class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto text-balance"
-      >
-        Pon a prueba tus conocimientos, crea tus propios quizzes y compite con
-        amigos. ¡La aventura del saber te espera!
-      </p>
+    <hr class="border-[#ff8a00]/70" />
 
-      <button class="bg-[#ff8a00] hover:bg-[#e52e71] flex mx-auto text-white font-bold py-3.5 px-5 mt-5 rounded-full hover:animate-pop cursor-pointer">Empezar Quiz <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-right ml-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg></button>
-    </div>
+    
 
     <script>
       const menuBtn = document.getElementById("menuBtn");
@@ -203,5 +177,3 @@
         });
       }
     </script>
-  </body>
-</html>
