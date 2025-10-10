@@ -1,9 +1,10 @@
 ---
 
+import LeaderBoardResults from '../components/LeaderBoardResults.astro';
 import Layout from '../layouts/Layout.astro';
-
+const nombre = Astro.url.searchParams.get('nombre');
 ---
 
 <Layout>
-	
+	<LeaderBoardResults nombre={nombre} />
 </Layout>
