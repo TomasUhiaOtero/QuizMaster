@@ -1,9 +1,29 @@
 ---
-
 import Layout from '../layouts/Layout.astro';
 import LeaderBoardIntro from '../components/LeaderBoardIntro.astro';
 ---
 
 <Layout>
-    <LeaderBoardIntro />
+  <LeaderBoardIntro />
 </Layout>
+
+<script>
+  const form = document.getElementById("nombreForm") as HTMLFormElement;
+  const input = document.getElementById("nombreInput") as HTMLInputElement;
+  
+  if (form && input) {
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      
+      const nombre = input.value.trim();
+      
+      if (!nombre) {
+        alert("Por favor introduce un nombre");
+        return false;
+      }
+      
+      window.location.href = `/leaderboard2?nombre=${encodeURIComponent(nombre)}`;
+      return false;
+    };
+  }
+</script>

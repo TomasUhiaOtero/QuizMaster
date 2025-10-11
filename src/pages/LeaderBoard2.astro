@@ -1,10 +1,110 @@
 ---
+import Layout from "../layouts/Layout.astro";
 
-import LeaderBoardResults from '../components/LeaderBoardResults.astro';
-import Layout from '../layouts/Layout.astro';
-const nombre = Astro.url.searchParams.get('nombre');
+const preguntas = [
+  { numero: 1, estado: 'correcta' },
+  { numero: 2, estado: 'correcta' },
+  { numero: 3, estado: 'incorrecta' },
+  { numero: 4, estado: 'correcta' },
+  { numero: 5, estado: 'correcta' },
+  { numero: 6, estado: 'correcta' },
+];
 ---
 
 <Layout>
-	<LeaderBoardResults nombre={nombre} />
+  <main class="min-h-screen pb-20">
+    <div class="mx-auto text-center mt-10">
+      <h1
+        id="tituloLeaderboard"
+        class="text-xl md:text-3xl lg:text-5xl font-bold text-gray-800 mb-2"
+      >
+        Felicidades! 🎉
+      </h1>
+      <p class="text-gray-500 mt-5">Aqui tienes los resultados:</p>
+    </div>
+
+    <!--Divs Puntuacion y Precision -->
+    <div class="mx-auto flex flex-col md:flex-row justify-center gap-10 mt-20 px-4">
+      <div
+        class="w-full md:w-85 py-10 px-10 rounded-2xl text-center shadow-xl bg-orange-100"
+      >
+        <p class="text-2xl mb-5 text-[#8E6E62]">Puntuación</p>
+        <p class="text-2xl text-center text-[#8E6E62]">
+          <span class="text-4xl font-bold text-[#FA6429]">8</span>/10
+        </p>
+      </div>
+
+      <div
+        class="w-full md:w-85 py-10 px-10 rounded-2xl text-center shadow-xl bg-orange-100"
+      >
+        <p class="text-2xl mb-5 text-[#8E6E62]">Precisión</p>
+        <p class="text-2xl text-center">
+          <span class="text-4xl font-bold">80%</span>
+        </p>
+      </div>
+    </div>
+
+    <!--Tabla Leaderboard-->
+    <div class="max-w-3xl mx-auto mt-20 px-4">
+      <h2 class="font-semibold text-2xl mb-8 text-center text-gray-800">
+        Resumen de Preguntas
+      </h2>
+      
+      <div class="space-y-4">
+        {preguntas.map((pregunta) => (
+          <div class="flex items-center justify-between bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors shadow-sm">
+            <div class="flex items-center gap-3">
+              {pregunta.estado === 'correcta' ? (
+                <div class="bg-green-100 rounded-full p-2">
+                  <!-- Icono Check -->
+                  <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+              ) : (
+                <div class="bg-red-100 rounded-full p-2">
+                  <!-- Icono X -->
+                  <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </div>
+              )}
+              <span class="font-semibold text-gray-700">
+                Pregunta {pregunta.numero}
+              </span>
+            </div>
+            <span
+              class={`text-sm font-medium ${
+                pregunta.estado === 'correcta'
+                  ? 'text-green-500'
+                  : 'text-red-500'
+              }`}
+            >
+              {pregunta.estado === 'correcta' ? 'Correcta' : 'Incorrecta'}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Botones -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10 mb-10">
+        <button class="bg-[#FA6429] hover:bg-[#e5551a] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:shadow-lg">
+          Volver a Jugar
+        </button>
+        <button class="bg-orange-200 hover:bg-orange-300 text-orange-700 font-bold py-3 px-8 rounded-full transition-all duration-300">
+          Ver Respuestas
+        </button>
+      </div>
+    </div>
+  </main>
 </Layout>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const nombre = urlParams.get("nombre") || "Jugador";
+
+  const titulo = document.getElementById("tituloLeaderboard");
+  if (titulo) {
+    titulo.textContent = `Felicidades, ${nombre}! 🎉`;
+  }
+</script>
