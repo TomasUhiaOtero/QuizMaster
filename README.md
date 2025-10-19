@@ -34,7 +34,7 @@ Si deseas probar el proyecto localmente:
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/usuario/mi-proyecto.git
+git clone [https://github.com/TomasUhiaOtero/QuizMaster.git]
 
 # Entrar en el directorio
 cd mi-proyecto
