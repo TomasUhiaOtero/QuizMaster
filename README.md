@@ -37,7 +37,7 @@ Si deseas probar el proyecto localmente:
 git clone [https://github.com/TomasUhiaOtero/QuizMaster.git]
 
 # Entrar en el directorio
-cd mi-proyecto
+cd QuizMaster
 
 # Instalar dependencias
 npm install
