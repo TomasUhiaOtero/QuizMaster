@@ -9,6 +9,7 @@
 
 > ⚠️ **Estado:** Proyecto actualmente en desarrollo.  
 > Algunas secciones y estilos pueden cambiar o estar incompletos.
+> Trabajando en el front...
 
 ---
 
