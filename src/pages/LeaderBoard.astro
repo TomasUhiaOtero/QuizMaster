@@ -1,29 +1,191 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LeaderBoardIntro from '../components/LeaderBoardIntro.astro';
+import Layout from "../layouts/Layout.astro";
 ---
+<style>
+    .tab-btn {
+      padding-bottom: 0.75rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      color: #6b7280;
+    }
+    
+    .tab-btn.active {
+      color: #f97316;
+      border-bottom: 2px solid #f97316;
+    }
+    
+    thead th {
+      text-align: left;
+      padding: 1rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #6b7280;
+    }
+
+    tbody tr:hover {
+      background-color: #fff7ed;
+       transform: scale(1.02);
+    }
+    
+    tbody tr {
+      border-bottom: 1px solid #f3f4f6;
+      transition: all 0.2s ease;
+    }
+    
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+    
+    tbody tr:hover td:first-child {
+        color: #f97316;
+        font-weight: 600;
+         transition: color 0.2s ease, font-weight 0.2s ease;
+    }
+    
+    tbody td {
+      padding: 1rem 1.5rem;
+      color: #111827;
+    }
+    
+    tbody td:nth-child(2) {
+      font-weight: 500;
+    }
+    
+    tbody td:nth-child(3) {
+      font-weight: 600;
+    }
+    
+    tbody td:nth-child(4) {
+      color: #9ca3af;
+    }
+  </style>
 
 <Layout>
-  <LeaderBoardIntro />
-</Layout>
+  <!-- Contenedor principal -->
+  <div class="max-w-7xl mx-auto mt-10">
+    <!-- Título -->
+    <h1 class="text-4xl font-bold mb-8">Leaderboard</h1>
+    
+    <!-- Tabs -->
+    <div class="flex gap-6 mb-6 border-b border-gray-200">
+      <button
+        data-tab="today"
+        class="tab-btn pb-3 px-2 font-medium transition-colors text-gray-500"
+      >
+        Today
+      </button>
+      <button
+        data-tab="week"
+        class="tab-btn pb-3 px-2 font-medium transition-colors text-gray-500"
+      >
+        This Week
+      </button>
+      <button
+        data-tab="all"
+        class="tab-btn pb-3 px-2 font-medium transition-colors text-orange-500 border-b-2 border-orange-500 active"
+      >
+        All Time
+      </button>
+    </div>
 
-<script>
-  const form = document.getElementById("nombreForm") as HTMLFormElement;
-  const input = document.getElementById("nombreInput") as HTMLInputElement;
-  
-  if (form && input) {
-    form.onsubmit = (e) => {
-      e.preventDefault();
-      
-      const nombre = input.value.trim();
-      
-      if (!nombre) {
-        alert("Por favor introduce un nombre");
-        return false;
-      }
-      
-      window.location.href = `/leaderboard2?nombre=${encodeURIComponent(nombre)}`;
-      return false;
-    };
-  }
-</script>
+    <!-- Table -->
+    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+       <table class="w-full">
+        <thead>
+          <tr class="border-b border-gray-200">
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Score</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Alex Rivera</td>
+            <td>980</td>
+            <td>2024-01-15</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Sophia Chen</td>
+            <td>950</td>
+            <td>2024-01-14</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Ethan Walker</td>
+            <td>920</td>
+            <td>2024-01-13</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Olivia Davis</td>
+            <td>900</td>
+            <td>2024-01-12</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Liam Carter</td>
+            <td>880</td>
+            <td>2024-01-11</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Ava Bennett</td>
+            <td>860</td>
+            <td>2024-01-10</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Noah Foster</td>
+            <td>840</td>
+            <td>2024-01-09</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Isabella Hayes</td>
+            <td>820</td>
+            <td>2024-01-08</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Jackson Reed</td>
+            <td>800</td>
+            <td>2024-01-07</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Mia Coleman</td>
+            <td>780</td>
+            <td>2024-01-06</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Funcionalidad de las pestañas
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remover estado activo de todas las pestañas
+        tabButtons.forEach(b => {
+          b.classList.remove('text-orange-500', 'border-b-2', 'border-orange-500', 'active');
+          b.classList.add('text-gray-500');
+        });
+        
+        // Activar la pestaña clickeada
+        btn.classList.remove('text-gray-500');
+        btn.classList.add('text-orange-500', 'border-b-2', 'border-orange-500', 'active');
+        
+        // Aquí podrías filtrar los datos según la pestaña seleccionada
+      });
+    });
+  </script>
+
+</Layout>
